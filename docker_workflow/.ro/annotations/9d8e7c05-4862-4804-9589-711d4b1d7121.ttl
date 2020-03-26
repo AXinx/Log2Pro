@@ -1,0 +1,5 @@
+@prefix wfdesc:  <http://purl.org/wf4ever/wfdesc#> .
+
+<http://ns.taverna.org.uk/2010/workflowBundle/78bf7523-8b7f-4d6a-98d1-13fa55a50bff/workflow/Workflow1/>
+      wfdesc:hasWorkflowDefinition
+              <../../workflow.wfbundle> .

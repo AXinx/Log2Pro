@@ -1,0 +1,95 @@
+{
+  "@context" : [ "https://w3id.org/bundle/context" ],
+  "id" : "/",
+  "manifest" : [ "/.ro/manifest.json" ],
+  "createdOn" : "2020-03-24T08:33:48.413Z",
+  "createdBy" : [ {
+    "uri" : "http://ns.taverna.org.uk/2010/xml/t2flow/raven/org.purl.wf4ever.provtaverna/prov-taverna-export/2.2.0/org.purl.wf4ever.provtaverna.export.W3ProvenanceExport",
+    "name" : "Taverna-PROV plugin"
+  } ],
+  "aggregates" : [ {
+    "uri" : "app://cabfabf3-d898-3db7-843d-ef4b4202be3a/outputs/OUTPUT2.png",
+    "mediatype" : "image/png"
+  }, {
+    "uri" : "app://eb0c5bb7-b41d-3c5c-8399-75e3f6dbb0d7/outputs/OUTPUT1.png",
+    "mediatype" : "image/png"
+  }, {
+    "uri" : "app://cabfabf3-d898-3db7-843d-ef4b4202be3a/outputs/OUTPUT1.png",
+    "mediatype" : "image/png"
+  }, {
+    "file" : "/outputs/OUTPUT2.png",
+    "folder" : "/outputs/",
+    "mediatype" : "image/png",
+    "createdOn" : "2020-03-24T08:33:47.915Z",
+    "proxy" : "urn:uuid:ac59aa0b-a951-403a-985b-70f3bbd93418"
+  }, {
+    "file" : "/workflowrun.prov.ttl",
+    "folder" : "/",
+    "mediatype" : "text/turtle",
+    "createdOn" : "2020-03-24T08:33:47.946Z",
+    "createdBy" : [ {
+      "uri" : "http://ns.taverna.org.uk/2011/software/taverna-core-2.5.0",
+      "name" : "Taverna Workbench Core 2.5.0"
+    }, {
+      "uri" : "http://ns.taverna.org.uk/2010/xml/t2flow/raven/org.purl.wf4ever.provtaverna/prov-taverna-export/2.2.0/org.purl.wf4ever.provtaverna.export.W3ProvenanceExport",
+      "name" : "Taverna-PROV plugin"
+    } ],
+    "proxy" : "urn:uuid:a18513b1-55b0-49d8-af91-1030fd867408"
+  }, {
+    "uri" : "app://cabfabf3-d898-3db7-843d-ef4b4202be3a/outputs/OUTPUT3.png",
+    "mediatype" : "image/png"
+  }, {
+    "file" : "/workflow.wfbundle",
+    "folder" : "/",
+    "mediatype" : "application/vnd.taverna.scufl2.workflow-bundle",
+    "createdOn" : "2020-03-24T08:33:48.026Z",
+    "proxy" : "urn:uuid:cde26ccd-9fe0-4693-b63c-a5d838ef4618"
+  }, {
+    "uri" : "app://4a32336e-60f4-39a3-bed8-1a7ff3caa72a/outputs/OUTPUT2.png",
+    "mediatype" : "image/png"
+  }, {
+    "file" : "/outputs/OUTPUT1.png",
+    "folder" : "/outputs/",
+    "mediatype" : "image/png",
+    "createdOn" : "2020-03-24T08:33:47.917Z",
+    "proxy" : "urn:uuid:a9900275-d86e-49a8-8d76-fb9c42a97926"
+  }, {
+    "file" : "/outputs/OUTPUT3.png",
+    "folder" : "/outputs/",
+    "mediatype" : "image/png",
+    "createdOn" : "2020-03-24T08:33:47.92Z",
+    "proxy" : "urn:uuid:bffb983e-1e71-46ed-a114-e878628dabbd"
+  }, {
+    "uri" : "app://4a32336e-60f4-39a3-bed8-1a7ff3caa72a/outputs/OUTPUT3.png",
+    "mediatype" : "image/png"
+  }, {
+    "uri" : "app://4a32336e-60f4-39a3-bed8-1a7ff3caa72a/outputs/OUTPUT1.png",
+    "mediatype" : "image/png"
+  }, {
+    "uri" : "app://eb0c5bb7-b41d-3c5c-8399-75e3f6dbb0d7/outputs/OUTPUT2.png",
+    "mediatype" : "image/png"
+  }, {
+    "uri" : "app://eb0c5bb7-b41d-3c5c-8399-75e3f6dbb0d7/outputs/OUTPUT3.png",
+    "mediatype" : "image/png"
+  } ],
+  "annotations" : [ {
+    "annotation" : "urn:uuid:9d8e7c05-4862-4804-9589-711d4b1d7121",
+    "about" : "/workflow.wfbundle",
+    "content" : "/.ro/annotations/9d8e7c05-4862-4804-9589-711d4b1d7121.ttl"
+  }, {
+    "about" : "http://ns.taverna.org.uk/2010/workflowBundle/78bf7523-8b7f-4d6a-98d1-13fa55a50bff/",
+    "content" : "/workflow.wfbundle"
+  }, {
+    "about" : "/",
+    "content" : "/workflowrun.prov.ttl"
+  }, {
+    "about" : "http://ns.taverna.org.uk/2010/workflowBundle/78bf7523-8b7f-4d6a-98d1-13fa55a50bff/workflow/Workflow1/",
+    "content" : "/workflow.wfbundle"
+  }, {
+    "about" : "http://ns.taverna.org.uk/2011/run/6f1f465c-8743-48c0-a99c-a908f3846349/",
+    "content" : "/"
+  }, {
+    "about" : "/workflow.wfbundle",
+    "content" : "/.ro/annotations/workflow.wfdesc.ttl"
+  } ]
+}

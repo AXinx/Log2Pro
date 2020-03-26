@@ -1,0 +1,81 @@
+@base <http://ns.taverna.org.uk/2010/workflowBundle/78bf7523-8b7f-4d6a-98d1-13fa55a50bff/workflow/Workflow1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix wfdesc: <http://purl.org/wf4ever/wfdesc#> .
+@prefix wf4ever: <http://purl.org/wf4ever/wf4ever#> .
+@prefix roterms: <http://purl.org/wf4ever/roterms#> .
+@prefix dc: <http://purl.org/dc/elements/1.1/> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix comp: <http://purl.org/DP/components#> .
+@prefix dep: <http://scape.keep.pt/vocab/dependencies#> .
+@prefix biocat: <http://biocatalogue.org/attribute/> .
+@prefix : <#> .
+
+<processor/EFFECT1/> a wfdesc:Process , wfdesc:Description , owl:Thing , wf4ever:RESTService ;
+	rdfs:label "EFFECT1" ;
+	wfdesc:hasInput <processor/EFFECT1/in/inputBody> ;
+	wfdesc:hasOutput <processor/EFFECT1/out/responseBody> ;
+	wf4ever:rootURI "http://localhost:8089/"^^xsd:anyURI .
+
+<processor/EFFECT2/> a wfdesc:Process , wfdesc:Description , owl:Thing , wf4ever:RESTService ;
+	rdfs:label "EFFECT2" ;
+	wfdesc:hasInput <processor/EFFECT2/in/inputBody> ;
+	wfdesc:hasOutput <processor/EFFECT2/out/responseBody> ;
+	wf4ever:rootURI "http://localhost:8089/"^^xsd:anyURI .
+
+<processor/GETIMAGE/> a wfdesc:Process , wfdesc:Description , owl:Thing , wf4ever:RESTService ;
+	rdfs:label "GETIMAGE" ;
+	wfdesc:hasOutput <processor/GETIMAGE/out/responseBody> ;
+	wf4ever:rootURI "http://localhost:8089/"^^xsd:anyURI .
+
+<datalink?from=processor/EFFECT1/out/responseBody&to=out/OUTPUT2> a wfdesc:DataLink ;
+	wfdesc:hasSource <processor/EFFECT1/out/responseBody> ;
+	wfdesc:hasSink <out/OUTPUT2> .
+
+<datalink?from=processor/EFFECT1/out/responseBody&to=processor/EFFECT2/in/inputBody> a wfdesc:DataLink ;
+	wfdesc:hasSource <processor/EFFECT1/out/responseBody> ;
+	wfdesc:hasSink <processor/EFFECT2/in/inputBody> .
+
+<datalink?from=processor/EFFECT2/out/responseBody&to=out/OUTPUT3> a wfdesc:DataLink ;
+	wfdesc:hasSource <processor/EFFECT2/out/responseBody> ;
+	wfdesc:hasSink <out/OUTPUT3> .
+
+<datalink?from=processor/GETIMAGE/out/responseBody&to=out/OUTPUT1> a wfdesc:DataLink ;
+	wfdesc:hasSource <processor/GETIMAGE/out/responseBody> ;
+	wfdesc:hasSink <out/OUTPUT1> .
+
+<datalink?from=processor/GETIMAGE/out/responseBody&to=processor/EFFECT1/in/inputBody> a wfdesc:DataLink ;
+	wfdesc:hasSource <processor/GETIMAGE/out/responseBody> ;
+	wfdesc:hasSink <processor/EFFECT1/in/inputBody> .
+
+<> a wfdesc:Workflow , wfdesc:Description , wfdesc:Process ;
+	rdfs:label "Workflow1" ;
+	wfdesc:hasOutput <out/OUTPUT1> , <out/OUTPUT2> , <out/OUTPUT3> ;
+	wfdesc:hasSubProcess <processor/EFFECT1/> , <processor/EFFECT2/> , <processor/GETIMAGE/> ;
+	wfdesc:hasDataLink <datalink?from=processor/EFFECT1/out/responseBody&to=processor/EFFECT2/in/inputBody> , <datalink?from=processor/EFFECT1/out/responseBody&to=out/OUTPUT2> , <datalink?from=processor/EFFECT2/out/responseBody&to=out/OUTPUT3> , <datalink?from=processor/GETIMAGE/out/responseBody&to=processor/EFFECT1/in/inputBody> , <datalink?from=processor/GETIMAGE/out/responseBody&to=out/OUTPUT1> .
+
+<out/OUTPUT1> a wfdesc:Output , wfdesc:Description , wfdesc:Input ;
+	rdfs:label "OUTPUT1" .
+
+<out/OUTPUT2> a wfdesc:Output , wfdesc:Description , wfdesc:Input ;
+	rdfs:label "OUTPUT2" .
+
+<out/OUTPUT3> a wfdesc:Output , wfdesc:Description , wfdesc:Input ;
+	rdfs:label "OUTPUT3" .
+
+<processor/EFFECT1/in/inputBody> a wfdesc:Input , wfdesc:Description ;
+	rdfs:label "inputBody" .
+
+<processor/EFFECT1/out/responseBody> a wfdesc:Output , wfdesc:Description ;
+	rdfs:label "responseBody" .
+
+<processor/EFFECT2/in/inputBody> a wfdesc:Input , wfdesc:Description ;
+	rdfs:label "inputBody" .
+
+<processor/EFFECT2/out/responseBody> a wfdesc:Output , wfdesc:Description ;
+	rdfs:label "responseBody" .
+
+<processor/GETIMAGE/out/responseBody> a wfdesc:Output , wfdesc:Description ;
+	rdfs:label "responseBody" .
