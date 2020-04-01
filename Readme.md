@@ -1,3 +1,5 @@
+### Introduction
+
 This project is to integrate workflow provenance data and system logs. Filese include:
 
 buile.sh: build the prise service and push it to docker respository. 
@@ -12,7 +14,7 @@ buile.sh: build the prise service and push it to docker respository.
 
 So, next is how to use these files.
 
-# Procedure of how to run this project
+### Procedure of how to run this project
 
 1. In docke_workflow, run docker-compose_prometheus.yml
 
