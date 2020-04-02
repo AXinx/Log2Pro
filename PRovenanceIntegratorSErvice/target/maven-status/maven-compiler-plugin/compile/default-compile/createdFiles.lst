@@ -1,9 +1,9 @@
 nl/uva/sne/vre4eic/amqp/rpc/Caller.class
-nl/uva/sne/vre4eic/prise/controller/ProvIntegratorController.class
 nl/uva/sne/vre4eic/prise/service/ProvParser.class
+nl/uva/sne/vre4eic/prise/controller/ProvIntegratorController.class
 nl/uva/sne/vre4eic/prise/service/WorkflowParser.class
-nl/uva/sne/vre4eic/prise/util/Util.class
 nl/uva/sne/vre4eic/prise/util/WebDAVClient.class
+nl/uva/sne/vre4eic/prise/util/Util.class
 nl/uva/sne/vre4eic/amqp/rpc/Caller$1.class
 nl/uva/sne/vre4eic/data/Workflow.class
 nl/uva/sne/vre4eic/prise/Application.class

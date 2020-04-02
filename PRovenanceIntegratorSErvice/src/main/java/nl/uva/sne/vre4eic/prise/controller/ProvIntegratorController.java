@@ -5,7 +5,14 @@
  */
 package nl.uva.sne.vre4eic.prise.controller;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -29,7 +36,8 @@ public class ProvIntegratorController {
     private final String[] workflowExtentions = new String[]{"t2flow"};
 
     @RequestMapping(value = "/uploadFile", method = RequestMethod.POST, produces = {"application/json"})
-    public @ResponseBody String submit(@RequestParam("files") MultipartFile[] files) {
+    public @ResponseBody
+    String submit(@RequestParam("files") MultipartFile[] files) {
         String output = new String();
         File provFile = null,
                 wfFile = null;
@@ -63,6 +71,35 @@ public class ProvIntegratorController {
         String workflow = "\"workflow\":" + provParser.getWorkflow().toString();
         return "{" + services + "," + workflow + "}";
     }
-    
+
+    @RequestMapping(value = "/get_data", method = RequestMethod.GET, produces = {"application/json"})
+    public @ResponseBody
+    String getData(@RequestParam String queryURL) {
+        try {
+            Logger.getLogger(ProvIntegratorController.class.getName()).log(Level.INFO, "queryURL: {0}", queryURL);
+
+            URL url = new URL(queryURL);
+            HttpURLConnection con = (HttpURLConnection) url.openConnection();
+            con.setRequestMethod("GET");
+            int status = con.getResponseCode();
+            StringBuilder content;
+            try (BufferedReader in = new BufferedReader(
+                    new InputStreamReader(con.getInputStream()))) {
+                String inputLine;
+                content = new StringBuilder();
+                while ((inputLine = in.readLine()) != null) {
+                    content.append(inputLine);
+                }
+            }
+            con.disconnect();
+            Logger.getLogger(ProvIntegratorController.class.getName()).log(Level.INFO, "Response: {0}", content.toString());
+            return content.toString();
+        } catch (MalformedURLException ex) {
+            Logger.getLogger(ProvIntegratorController.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ProvIntegratorController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 
 }

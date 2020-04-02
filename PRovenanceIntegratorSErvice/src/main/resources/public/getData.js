@@ -6,25 +6,26 @@ const db_connector_endpoint1 = "http://" + document.location.hostname + ":9090/m
 //const db_connector_endpoint = 'http://db_connector:8080/metrics';
 //const db_connector_endpoint = 'http://localhost:8080/metrics';
 
-var xhr = new XMLHttpRequest();
-xhr.open("POST", "http://localhost:9090/metrics", true);
-xhr.setRequestHeader("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
-xhr.setRequestHeader("Accept-Language", "en-US,en;q=0.5");
-xhr.setRequestHeader("Content-Type", "application/x-www-formurlencoded");
-xhr.withCredentials = true;
-xhr.send();
-console.log(xhr.responseText)
-
-x = new XMLHttpRequest();
-x.open("GET","http://localhost:9090/metrics",false)
-x.send()
-console.log(x.responseText)
+//var xhr = new XMLHttpRequest();
+//xhr.open("POST", "http://localhost:9090/metrics", true);
+//xhr.setRequestHeader("Accept","text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8");
+//xhr.setRequestHeader("Accept-Language", "en-US,en;q=0.5");
+//xhr.setRequestHeader("Content-Type", "application/x-www-formurlencoded");
+//xhr.withCredentials = true;
+//xhr.send();
+//console.log(xhr.responseText)
+//
+//x = new XMLHttpRequest();
+//x.open("GET","http://localhost:9090/metrics",false)
+//x.send()
+//console.log(x.responseText)
 
 function getData() {
     document.getElementById('dataBtn').disabled = true;
     var innerHTML = window.location.href.split('/');
     innerHTML.pop();
     innerHTML = innerHTML.join('/');
+    console.log('innerHTML: '+innerHTML)
 
     var serviceArray = new Array();
     var table = document.getElementById('output_table');
@@ -67,7 +68,7 @@ function connectDB(wfObject) {
             set.add(element.resource);
 
             var prm = retrieveData(element.endpoint, wfObject.workflow);
-            console.log(prm)
+            console.log("prm: " +prm)
             prm.resourceID = element.resource;
             promiseArray.push(prm);
         }
@@ -127,19 +128,28 @@ function getTimeRange(workflow){
 }
 
 function retrieveData(endpoint, workflow) {
-    console.log(endpoint);
-    console.log(workflow);
+//    console.log(endpoint);
+//    console.log(workflow);
     var endpointURL = endpoint.replace(/:[0-9]+(?:\/.*)?/, ':' + prometheusPort);
-    console.log(endpointURL);
+//    console.log(endpointURL);
     var timeRange = getTimeRange(workflow);
-    console.log(timeRange);
-    console.log(db_connector_endpoint1);
+//    console.log(timeRange);
+//    console.log(db_connector_endpoint1);
     var url = new URL(db_connector_endpoint1);
-    console.log(url);
+//    console.log(url);
     url.searchParams.append('endpoint', endpointURL);
     url.searchParams.append('startTime', timeRange[0]);
     url.searchParams.append('endTime', timeRange[1]);
-    console.log(url);
-    return axios.get(url, {headers: {'Access-Control-Allow-Origin': '*','Content-Type': 'application/x-www-formurlencoded'}});
-    console.log('here');
+        var innerHTML = window.location.href.split('/');
+    innerHTML.pop();
+    innerHTML = innerHTML.join('/');
+    var params = "queryURL="+url;
+    var xhr = new XMLHttpRequest();
+//    http://localhost:9081/get_data?queryURL=dsfdsf
+    xhr.open("GET",innerHTML+"/get_data?"+params,false)
+    xhr.send()
+    console.log("xhr responseText: "+xhr.responseText)
+    return xhr.responseText
+//    console.log('url: '+url);
+//    return axios.get(url, {headers: {'Access-Control-Allow-Origin': '*','Content-Type': 'application/x-www-formurlencoded'}});
 }
