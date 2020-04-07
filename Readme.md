@@ -22,7 +22,7 @@ So, next is how to use these files.
 sudo docker stack deploy demo -c docker-compose_prometheus.yml
 ```
 
-2. Open Taverna, run one workflow and save values 
+2. Open Taverna, run the new_workflow.t2flow workflow in docker_workflow and save provenance data.
 
 3. Run the build.sh
 
@@ -37,3 +37,7 @@ sudo docker stack deploy demo -c docker-compose_prometheus.yml
    The port of Prometheus is 9090. 
    
    The port of Taverna service is 8089.
+
+5. In LoadFiles, upload new_workflow.t2flow and new_workflow.t2flow and workflowrun.prov.ttl. Then click "Parse input".
+
+6. When get output, choose one service, click "Visualize data".
